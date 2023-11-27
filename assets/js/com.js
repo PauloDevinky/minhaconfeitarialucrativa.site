@@ -1,18 +1,7 @@
-function setCookie(name, value, days) {
-    var expires = "";
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-        expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
-}
-
 function loadMore() {
     $('#more').show()
     $('.fb-comments-loadmore').hide().remove()
 }
-
 $(document).ready(function() {
     $('date').each(function() {
         if ($(this).attr('data-date-minus')) {
@@ -26,7 +15,7 @@ function dateMinus(what) {
     var nw = today - what * 10000
     var newd = new Date()
     newd.setTime(nw)
-    var mthName = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+    var mthName = ['Janeiro', 'Fevereiro', 'MarÃ§o', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
     var mthNm = mthName[newd.getMonth()]
     return (newd.getDate() +
         ' de ' +
@@ -46,7 +35,6 @@ function round(what) {
         return what
     }
 }
-
 $('like').on('click', function() {
     if ($(this).hasClass('liked')) {
         $(this).parents('.fb-comments-wrapper, .fb-comments-reply-wrapper').find('likes').text(parseInt($(this).parents('.fb-comments-wrapper, .fb-comments-reply-wrapper').find('likes').text()) - 1)
@@ -58,7 +46,6 @@ $('like').on('click', function() {
         $(this).text('Descurtir')
     }
 })
-
 $('reply').on('click', function() {
     if (fbobj != null) {
         handleReply($(this).parents('.fb-comments-wrapper, .fb-comments-reply-wrapper').attr('id'))
@@ -111,11 +98,9 @@ function postReply(id) {
         setCookie('fbreplies', JSON.stringify(fbreplies), today)
     }
 }
-
 setTimeout(function() {
     $('#add-to-cart').show()
 }, 20000)
-
 var today = new Date()
 today.setDate(today.getFullYear() + 1)
 setCookie('returningVisitor', 'yes', today)
